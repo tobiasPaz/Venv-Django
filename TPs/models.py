@@ -4,7 +4,7 @@ from django.db import models
 
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=200)
-
+    
     def __str__(self) -> str:
         return self.nombre
     
@@ -15,3 +15,4 @@ class Item(models.Model):
     
     def __str__(self) -> str:
         return self.nombre
+
