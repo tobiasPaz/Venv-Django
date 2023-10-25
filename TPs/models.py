@@ -4,12 +4,16 @@ from django.db import models
 
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=200)
+    fecha_de_creacion = models.DateField(auto_now_add=True)
+    fecha_de_edicion = models.DateField(auto_now=True)
     
     def __str__(self) -> str:
         return self.nombre
     
 class Item(models.Model):
     nombre = models.CharField(max_length=200)
+    fecha_de_creacion = models.DateField(auto_now_add=True)
+    fecha_de_edicion = models.DateField(auto_now=True)
     descripcion = models.TextField()
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
     

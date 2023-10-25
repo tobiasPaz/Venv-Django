@@ -6,18 +6,17 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
-    <!-- <script src='main.js'></script> -->
+    <script src="main.js"></script>
   </head>
   <body>
-    <h1>Proyectos:</h1>
-    <ul>
-      {% for proyecto in proyectos %}
-      <li>
-        <a href="http://localhost:8000/TPs/{{proyecto.id}}"
-          >{{proyecto.nombre}}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
+    <script>
+      fetch("http://localhost:8000")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    </script>
   </body>
 </html>

@@ -4,9 +4,14 @@ from django.template import loader
 from .models import Proyecto, Item
 
 def TPs(request):
-    item = Item.objects.order_by('nombre')
-    proyecto = Proyecto.objects.order_by('nombre')
+    proyectos = Proyecto.objects.order_by('nombre')
     plantilla = loader.get_template('index.html')
-    # return HttpResponse(plantilla.render())
-    context = {"proyecto": proyecto, "item": item}
+    context = {"proyectos": proyectos}
+    return HttpResponse(plantilla.render(context, request))
+
+def TPsDetalles(request, proyecto_id):
+    proyecto = Proyecto.objects.get(id=proyecto_id)
+    item = Item.objects.filter(proyecto=proyecto)
+    plantilla = loader.get_template('proyecto.html')
+    context = {"proyecto": proyecto, "items": item}
     return HttpResponse(plantilla.render(context, request))

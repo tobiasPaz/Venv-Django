@@ -19,6 +19,6 @@ from django.urls import path, include
 from TPs import views
 
 urlpatterns = [
-    path('TPs', include("TPs.urls")),
+    path('TPs/', include("TPs.urls")),
     path('admin/', admin.site.urls),
 ]
