@@ -5,13 +5,15 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    <h1>Proyecto: {{proyecto.nombre}}</h1>
+    {% load static %}
+  </head>
+  <body>
+    <span style="display: none;" id="id-proyecto">{{proyecto.id}}</span>
+    <span style="display: none;" id="csrf_token">{{csrf_token}}</span>
+    <h1>Proyecto: {{proyecto.nombre}}</h1> <a href="/TPs"><button id="btn-borrar">Eliminar proyecto</button></a>
     <h3>fecha de creacion: {{proyecto.fecha_de_creacion}}</h3>
     <h3>fecha de edicion: {{proyecto.fecha_de_edicion}}</h3>
+    <p>Descripción: {{proyecto.descripcion}}</p>
     <ul>
       {% for items in items %}
       <li>{{items.nombre}} <br>
@@ -19,5 +21,15 @@
       </li>
       <br>
       {% endfor %}
-</body>
-</html>
+      
+      
+      <h1>Item a agregar:</h1>
+      <form action="http://localhost:8000/TPs/crear_item/{{proyecto.id}}" method="post">
+        {% csrf_token %}
+        <label for="nombre-item">Nombre del item: <input type="text" id="nombre-item" name="nombre-item" placeholder="Nombre-item del item"></label><br>
+        <label for="descripcion-item">Descripción del item: <input type="text" id="descripcion-item" name="descripcion-item" placeholder="Descripción del item"></label>
+        <input type="submit" value="Crear">
+      </form>
+      <script src='{%static "Js/proyecto.js"%}'></script>
+    </body>
+    </html>
