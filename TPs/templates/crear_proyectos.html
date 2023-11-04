@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script> -->
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    {% load static %}
   </head>
   <body>
+    <span style="display: none;" id="csrf_token">{{csrf_token}}</span>
+
     <h1>Proyectos a crear:</h1>
     <form action="http://localhost:8000/TPs/crear_proyectos" method="post">
       {% csrf_token %}
@@ -30,5 +32,7 @@
       /></label>
       <input type="submit" value="Crear" />
     </form>
+
+    <script src='{%static "Js/crear_proyectos.js"%}'></script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 const btnBorrar = document.getElementById("btn-borrar");
 const csrf_token = document.getElementById("csrf_token");
 const idProyecto = document.getElementById("id-proyecto");
+const btnVolver = document.getElementById("btn-volver");
 
 function eliminar() {
   console.log("si funciono pero no se porque");
@@ -13,5 +14,11 @@ function eliminar() {
     },
   });
 }
+
+function volver() {
+  window.location.replace("http://localhost:8000/TPs");
+}
+
+btnVolver.addEventListener("click", volver);
 
 btnBorrar.addEventListener("click", eliminar);
